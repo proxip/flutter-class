@@ -1,3 +1,4 @@
+import 'package:demo/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -5,10 +6,10 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: Text('List'),
       ),
       body: ListView.builder(
-        itemCount: 10, // Assuming there are 10 tweets
+        itemCount: 150, // Assuming there are 10 tweets
         itemBuilder: (context, index) {
           return _buildTweetItem(context, index);
         },
@@ -31,7 +32,9 @@ class DashboardScreen extends StatelessWidget {
           ),
           title: Text(
             username,
+            textAlign: TextAlign.right,
             style: TextStyle(
+              color: Colors.red,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -39,11 +42,15 @@ class DashboardScreen extends StatelessWidget {
           trailing: IconButton(
             icon: Icon(Icons.more_horiz),
             onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => SplashScreen()),
+              );
               // Add your action here
             },
           ),
         ),
-        Divider(height: 0), // Divider between tweets
+        Divider(height: 10), // Divider between tweets
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_page.dart';
 import 'splash_screen.dart'; // Importing SplashScreen widget
 import 'dashboard_screen.dart'; // Importing DashboardScreen widget
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         primaryColor: Colors.blue,
       ),
-      home: SplashScreen(), // Initially navigate to SplashScreen
+      home: HomePage(), // Initially navigate to SplashScreen
     );
   }
 }

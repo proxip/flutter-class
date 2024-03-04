@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.red,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             SizedBox(height: 20.0),
             Text(
-              'Splash Screen',
+              'Splash Screen Demo',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24.0,
