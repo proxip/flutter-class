@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Page2 extends StatefulWidget {
-  @override
-  _Page2State createState() => _Page2State();
-}
-
-class _Page2State extends State<Page2> {
+class Page2 extends StatelessWidget {
   final TextEditingController _textEditingController = TextEditingController();
-  String _inputText = '';
+  final RxString _inputText = ''.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +26,26 @@ class _Page2State extends State<Page2> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  _inputText = _textEditingController.text;
-                });
+                _inputText.value = _textEditingController.text;
               },
               child: Text('Submit'),
             ),
             SizedBox(height: 20),
-            _inputText.isEmpty
+            Obx(() => _inputText.value.isEmpty
                 ? Container()
                 : Text(
-                    'Entered text: $_inputText',
+                    'Entered text: ${_inputText.value}',
                     style: TextStyle(fontSize: 16),
-                  ),
+                  )),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.changeTheme(ThemeData.light()); // Change theme to light
+        },
+        child: Icon(Icons.light_mode),
+      ),
     );
-  }
-
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
   }
 }

@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'page1.dart';
 import 'page2.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      title: 'Your App',
+      home: HomePage(),
+    );
+  }
+}
 
 class HomePage extends StatelessWidget {
   @override
@@ -23,9 +38,13 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _buildMenuItem(Icons.assignment, 'Tasks', () {}),
+              _buildMenuItem(Icons.assignment, 'Tasks', () {
+                Get.to(Page1());
+              }),
               SizedBox(width: 20),
-              _buildMenuItem(Icons.notifications, 'Notifications', () {}),
+              _buildMenuItem(Icons.notifications, 'Notifications', () {
+                Get.to(Page2());
+              }),
             ],
           ),
         ),
@@ -82,13 +101,6 @@ class DrawerWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Menu',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
                 SizedBox(height: 10),
                 CircleAvatar(
                   radius: 30,
@@ -118,9 +130,7 @@ class DrawerWidget extends StatelessWidget {
               ],
             ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Page1()));
+              Get.to(Page1());
             },
           ),
           ListTile(
@@ -135,12 +145,13 @@ class DrawerWidget extends StatelessWidget {
               ],
             ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Page2()));
+              Get.to(Page2());
             },
           ),
-          Divider(),
+          Divider(
+            height: 10,
+            thickness: 10,
+          ),
           ListTile(
             title: Row(
               children: [
